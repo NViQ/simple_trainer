@@ -10,11 +10,16 @@ import os
 
 load_dotenv()
 
-OPENAI_API_KEY= os.environ.get('OPENAI_KEY')
+OPENAI_API_KEY = os.environ.get('OPENAI_KEY')
 
 
-def format_system_prompt(user_query):
-    return f"Проверь этот текст на наличие грамматических или пунктуационных ошибок: \n\n{user_query}"
+# def format_system_prompt(user_query):
+#     return (
+#         "Проверь этот текст на наличие грамматических или пунктуационных ошибок, "
+#         "верни процент верного текста и если есть слова в которых были ошибки: "
+#         "\n\n" + user_query
+#     )
+
 
 class UserQueryView(APIView):
     def post(self, request, format=None):
@@ -22,11 +27,12 @@ class UserQueryView(APIView):
         user_query = request.data.get('user_query')
 
         if user_query is None:
-            return Response({'error': 'Отсутствует текст запроса'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Error there is no request text'}, status=status.HTTP_400_BAD_REQUEST)
 
         prompt = ChatPromptTemplate.from_template(
-            f"Проверь этот текст на наличие грамматических или пунктуационных ошибок: \n\n{user_query}"
-        )
+            "Check this text for grammatical errors, the words in which there were errors, "
+            "if any, and the percentage of the correct text:" + user_query
+            )
         output_parser = StrOutputParser()
         llm = OpenAI(model="gpt-3.5-turbo-instruct", openai_api_key=OPENAI_API_KEY)
         chain = (
