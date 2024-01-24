@@ -25,7 +25,7 @@ def post_api_call(api_url, user_id, user_query):
 # Пример использования
 api_url = 'http://localhost:8000/api/v1/check-writing/'
 user_id = '12345'
-user_query = 'Hi, how are you? Do you want to ploy with me? Do you wont to check the whole text or not all of it or not all of it?'
+user_query = 'Hi, how are you? Do you want to plooy with me? Do you wont to check the whole text or not all of it or not all of it?'
 
 response = post_api_call(api_url, user_id, user_query)
 print(response)
