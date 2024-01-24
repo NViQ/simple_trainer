@@ -15,7 +15,7 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get('OPENAI_KEY')
 
 
-class UserQueryView(APIView):
+class TextChatQueryView(APIView):
     def post(self, request, format=None):
         user_id = request.data.get('user_id')
         user_query = request.data.get('user_query')

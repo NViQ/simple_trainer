@@ -1,6 +1,6 @@
 from django.urls import path
-from .text_chat import UserQueryView
+from .text_chat import TextChatQueryView
 
 urlpatterns = [
-    path('check-writing/', UserQueryView.as_view(), name='check-writing'),
+    path('check-writing/', TextChatQueryView.as_view(), name='check-writing'),
 ]
