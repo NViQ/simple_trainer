@@ -7,10 +7,9 @@ class FileUploadView(APIView):
     parser_classes = [MultiPartParser]
 
     def post(self, request, format=None):
-        print(request.data)  # Для отладки
+        print(request.data)
         if 'audioFile' in request.FILES:
             file_obj = request.FILES['audioFile']
-            # Обработка файла и получение результата
             result = handle_uploaded_file(file_obj)
             return Response({'transcription': result})
         else:

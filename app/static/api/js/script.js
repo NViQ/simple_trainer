@@ -4,7 +4,6 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     var formData = new FormData();
     formData.append('audioFile', file, file.name); // Указываем имя файла
 
-    // Добавьте эту часть для проверки содержимого FormData
     for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
     }
