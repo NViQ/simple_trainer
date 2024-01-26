@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audio to Text Converter</title>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".mp3">
+    <button id="submitBtn">Convert to Text</button>
+    <div id="result"></div>
+
+    <script src="{% static 'admin/js/script.js' %}"></script>
+</body>
+</html>
